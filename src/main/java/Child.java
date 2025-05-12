@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Child extends Person{
-    Parent parent1;
-    Parent parent2;
-    Child[] siblings;
+    protected Parent parent1;
+    protected Parent parent2;
+    protected Child[] siblings;
 
     public Child(String name, int age, Parent parent1, Parent parent2){
         super(name, age);

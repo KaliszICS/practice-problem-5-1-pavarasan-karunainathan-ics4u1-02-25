@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Parent extends Person{
-    Parent spouse;
-    Child[] children;
+    protected Parent spouse;
+    protected Child[] children;
 
     public Parent(String name, int age, Parent spouse){
         super(name, age);
