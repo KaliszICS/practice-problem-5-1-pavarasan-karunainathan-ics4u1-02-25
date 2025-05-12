@@ -59,6 +59,22 @@ class PracticeProblemTest {
     }
 
     /**
+     * Safely checks if a method exists
+     * @param clazz The class to check
+     * @param methodName The method name
+     * @param parameterTypes The parameter types for the method
+     * @return The Method object or null if it doesn't exist
+     */
+    protected Method safeGetMethod2(Class<?> clazz, String methodName, Class<?>... parameterTypes) {
+        if (clazz == null) return null;
+        try {
+            return clazz.getDeclaredMethod(methodName, parameterTypes);
+        } catch (NoSuchMethodException e) {
+            return null;
+        }
+    }
+
+    /**
      * Safely checks if a method exists in the class or any of its superclasses
      * @param clazz The class to check
      * @param methodName The method name
@@ -499,10 +515,10 @@ class PracticeProblemTest {
         }
         
         // Test for absence of parent setters
-        Method setParent1Method = safeGetMethod(childClass, "setParent1", parentClass);
+        Method setParent1Method = safeGetMethod2(childClass, "setParent1", parentClass);
         assertNull(setParent1Method, "Child should NOT have a setParent1 method");
         
-        Method setParent2Method = safeGetMethod(childClass, "setParent2", parentClass);
+        Method setParent2Method = safeGetMethod2(childClass, "setParent2", parentClass);
         assertNull(setParent2Method, "Child should NOT have a setParent2 method");
         
         // Test siblings getter and setter
